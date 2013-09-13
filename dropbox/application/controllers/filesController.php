@@ -5,9 +5,9 @@ class Files_Controller extends Controller_Abstract
 {
     protected $_tempFilename = null;
 
-	public function __construct()
+    public function __construct()
     {
-   		parent::__construct();
+        parent::__construct();
     }
 
     /**
@@ -15,19 +15,19 @@ class Files_Controller extends Controller_Abstract
      *
      * @return void
      */
-	public function processMethod()
-	{
-		switch($this->_method)
+    public function processMethod()
+    {
+        switch($this->_method)
         {
             case "":
-                
-            break;
+
+                break;
 
             default:
-            	$this->invalidMethod();
+                $this->invalidMethod();
         }
-		
-	}
+
+    }
 
     /**
      * Upload a file to the user's Dropbox
@@ -87,9 +87,9 @@ class Files_Controller extends Controller_Abstract
             $result = $this->_doChunkedUpload($file, $path, $name, $overwrite);
             $logString = "Chunked Upload result: " . var_export($result, true);
         } catch(Exception $e) {
-            $logString = "Exception in putFileChunked method " . $logger->getEntrySeparator() . 
-                            "Code: " . $e->getCode() . $logger->getEntrySeparator() . 
-                            "Message: " . $e->getMessage();
+            $logString = "Exception in putFileChunked method " . $logger->getEntrySeparator() .
+                "Code: " . $e->getCode() . $logger->getEntrySeparator() .
+                "Message: " . $e->getMessage();
         }
 
         $logger->write($logString);
@@ -147,7 +147,7 @@ class Files_Controller extends Controller_Abstract
 
     protected function _doChunkedUpload($file, $path, $name, $overwrite)
     {
-        
+
         if (strpos($file, "http") === 0) {
             $file = $this->_preloadFileResource($file);
             $this->_tempFilename = $file;

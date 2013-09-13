@@ -20,7 +20,7 @@ class Google_RESTClient
     protected $_statusLine = null;
 
     protected $_headerOut = null;
-    
+
     protected $_bodyOut = null;
 
     public function __construct()
@@ -66,7 +66,7 @@ class Google_RESTClient
         $response = null;
         while (!feof($this->_socketHandle)) {
             $response .= fgets($this->_socketHandle, 128);
-        }        
+        }
 
         return $response;
     }
@@ -80,7 +80,7 @@ class Google_RESTClient
     {
         $this->_hostLine = "Host: {$host}" . self::RN;
     }
-    
+
     protected function _setHeaders($headers)
     {
         $h = $this->_explodeHeadersByKeyVal($headers);
@@ -94,7 +94,7 @@ class Google_RESTClient
 
     protected function _setBody($body)
     {
-        if (null !== $body && is_array($body)) { 
+        if (null !== $body && is_array($body)) {
             $body =  http_build_query($body, "", "&");
         }
 
@@ -133,7 +133,7 @@ class Google_RESTClient
     protected function _parseResponse($response, $raw)
     {
         if (empty($response)) {
-            throw new Exception("Empty response considered as an error", 324);     
+            throw new Exception("Empty response considered as an error", 324);
         }
 
         if (strpos($response, "\r\n\r\n") !== false) {
@@ -152,7 +152,7 @@ class Google_RESTClient
             $statusCode = $matches[1];
             $statusMessage = $matches[2];
         } else {
-            throw new Exception("Invalid status line recieved"); 
+            throw new Exception("Invalid status line recieved");
         }
 
         $headers = array();

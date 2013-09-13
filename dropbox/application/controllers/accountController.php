@@ -2,9 +2,9 @@
 
 class Account_Controller extends Controller_Abstract
 {
-	public function __construct()
+    public function __construct()
     {
-   		parent::__construct();
+        parent::__construct();
     }
 
     /**
@@ -12,29 +12,29 @@ class Account_Controller extends Controller_Abstract
      *
      * @return void
      */
-	public function processMethod()
-	{
-		switch($this->_method)
+    public function processMethod()
+    {
+        switch($this->_method)
         {
             case "info":
                 $this->methodInfo();
-            break;
+                break;
 
             default:
-            	$this->invalidMethod();
+                $this->invalidMethod();
         }
-		
-	}
 
-	protected function methodInfo()
-	{
-		$info = $this->getInfo();
-		return $info;
-	}
+    }
+
+    protected function methodInfo()
+    {
+        $info = $this->getInfo();
+        return $info;
+    }
 
     public function getInfo()
     {
-    	$response = $this->_session->fetch("GET", $this->_dropboxAPIURL, "/account/info");
+        $response = $this->_session->fetch("GET", $this->_dropboxAPIURL, "/account/info");
         return $response["body"];
     }
 }

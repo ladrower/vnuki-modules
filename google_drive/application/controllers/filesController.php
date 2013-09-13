@@ -5,9 +5,9 @@ class Files_Controller extends Controller_Abstract
 {
     protected $_tempFilename = null;
 
-	public function __construct()
+    public function __construct()
     {
-   		parent::__construct();
+        parent::__construct();
     }
 
     /**
@@ -15,19 +15,19 @@ class Files_Controller extends Controller_Abstract
      *
      * @return void
      */
-	public function processMethod()
-	{
-		switch($this->_method)
+    public function processMethod()
+    {
+        switch($this->_method)
         {
             case "":
-                
-            break;
+
+                break;
 
             default:
-            	$this->invalidMethod();
+                $this->invalidMethod();
         }
-		
-	}
+
+    }
 
     public function uploadFileChunked($file, $name = null)
     {
@@ -38,9 +38,9 @@ class Files_Controller extends Controller_Abstract
             $result = $this->_doChunkedUpload($file, $name);
             $logString = "Chunked Upload result: " . var_export($result, true);
         } catch(Exception $e) {
-            $logString = "Exception in uploadFileChunked method " . $logger->getEntrySeparator() . 
-                            "Code: " . $e->getCode() . $logger->getEntrySeparator() . 
-                            "Message: " . $e->getMessage();
+            $logString = "Exception in uploadFileChunked method " . $logger->getEntrySeparator() .
+                "Code: " . $e->getCode() . $logger->getEntrySeparator() .
+                "Message: " . $e->getMessage();
         }
 
         $logger->write($logString);
@@ -98,7 +98,7 @@ class Files_Controller extends Controller_Abstract
 
     protected function _doChunkedUpload($file, $name = null)
     {
-        
+
         if (strpos($file, "http") === 0) {
             $file = $this->_preloadFileResource($file);
             $this->_tempFilename = $file;
@@ -117,7 +117,7 @@ class Files_Controller extends Controller_Abstract
         finfo_close($finfo);
 
         $body = "{\"title\":\"{$fileTitle}\"}" ;
-        
+
         $headers = array(
             "Content-Length: " . strlen($body),
             "Content-Type: application/json; charset=UTF-8",
@@ -180,8 +180,8 @@ class Files_Controller extends Controller_Abstract
                 $code = $e->getCode();
                 if ($code >= 500 || $code == 324) {
                     $headers = array(
-                            "Content-Length: 0",
-                            "Content-Range: bytes */" . $fileSize
+                        "Content-Length: 0",
+                        "Content-Range: bytes */" . $fileSize
                     );
                     sleep(5);
                     $response = $this->_session->fetch("PUT", $this->_commonAPIURL, $url, $headers, null, null);

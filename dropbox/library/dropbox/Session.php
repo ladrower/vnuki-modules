@@ -283,18 +283,18 @@ class Dropbox_Session extends Dropbox_RESTClient
         switch ($method) {
             case "POST":
                 $response = $this->post($url . $api, $params, null, $raw);
-            break;
+                break;
 
             case "PUT":
                 $query = "?" . http_build_query($params, "", "&");
                 $response = $this->put($url . $api . $query, $inputFile, null, $raw);
-            break;
+                break;
 
             case "GET":
             default:
                 $query = "?" . http_build_query($params, "", "&");
                 $response = $this->get($url . $api . $query, null, $raw);
-            break;
+                break;
         }
 
         return $response;

@@ -8,26 +8,26 @@ require_once(MODULE_LIBPATH . DS . "drive" . DS . "RESTClient.php");
 require_once(MODULE_LIBPATH . DS . "drive" . DS . "Session.php");
 
 
-/* 
+/*
  * Google Drive Module Bootstrap class
- * Contains two public methods: 
+ * Contains two public methods:
  *      run() - for outer use (outer http request processing)
  *      retrieveController() - for inner use (delegates controller object to the caller)
 */
 class Bootstrap
 {
-	protected $_controller;
+    protected $_controller;
     protected $_validControllers;
 
-	public function __construct()
+    public function __construct()
     {
-    	$this->_validControllers = array('authorization', 'account', 'files');
+        $this->_validControllers = array('authorization', 'account', 'files');
         $this->_init();
     }
 
     protected function _init()
     {
-    	$controller = $this->_getRequestVar('controller');
+        $controller = $this->_getRequestVar('controller');
 
         if (null !== $controller) {
             $this->_loadController($controller);
@@ -35,7 +35,7 @@ class Bootstrap
     }
 
     protected function _loadController($name)
-    {   
+    {
         if (!in_array($name, $this->_validControllers)) {
             return false;
         }
@@ -63,14 +63,14 @@ class Bootstrap
     }
 
 
-	protected function _getRequestVar($name)
+    protected function _getRequestVar($name)
     {
         return (isset($_GET[$name])) ? $_GET[$name] : null;
     }
 
-	public function run()
-	{
-		if ($this->_controller) {
+    public function run()
+    {
+        if ($this->_controller) {
             try {
                 $this->_controller->processMethod();
             } catch (Exception $e) {
@@ -81,13 +81,13 @@ class Bootstrap
 
                 $this->_controller->relogin(
                     array(
-                        'action' => $this->_getRequestVar('method'), 
+                        'action' => $this->_getRequestVar('method'),
                         'controller' => $this->_getRequestVar('controller')
                     )
                 );
             }
         }
-	}
+    }
 
     public function retrieveController($name)
     {
@@ -100,7 +100,7 @@ class Bootstrap
 
 class Exception extends \Exception
 {
-    
+
 }
 
 ?>

@@ -125,16 +125,16 @@ class Google_Session extends Google_RESTClient
         switch ($method) {
             case "POST":
                 $response = $this->post($uri, $headers, $body, $raw);
-            break;
+                break;
 
             case "PUT":
                 $response = $this->put($uri, $headers, $body, $raw);
-            break;
+                break;
 
             case "GET":
             default:
                 $response = $this->get($uri, $headers, $raw);
-            break;
+                break;
         }
 
         return $response;

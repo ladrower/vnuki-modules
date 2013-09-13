@@ -79,7 +79,7 @@ class Dropbox_RESTClient
      * @return string  Error message
      */
     public function error() {
-         return curl_error($this->curl);
+        return curl_error($this->curl);
     }
 
     /**
@@ -87,7 +87,7 @@ class Dropbox_RESTClient
      * @return int
      */
     public function errno() {
-         return curl_errno($this->curl);
+        return curl_errno($this->curl);
     } // end function
 
     public function get($url, $headers = array(), $raw = false) {
@@ -120,15 +120,15 @@ class Dropbox_RESTClient
                 else {
                     throw new Exception("Unable to load resource '$body'");
                 }
-            break;
+                break;
 
             case "POST":
                 curl_setopt($this->curl, CURLOPT_POST, true);
-            break;
+                break;
 
             case "GET":
             default:
-            break;
+                break;
         }
 
         // Set the headers
@@ -150,8 +150,8 @@ class Dropbox_RESTClient
         $info = curl_getinfo($this->curl);
 
         //if ( isAuthorized() ) {
-         //   echo curl_errno($this->curl) . '___';
-          //  var_dump($response, $info);
+        //   echo curl_errno($this->curl) . '___';
+        //  var_dump($response, $info);
         //}
 
         // Close any open resource handle
