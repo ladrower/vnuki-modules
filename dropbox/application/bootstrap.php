@@ -16,8 +16,8 @@ require_once(MODULE_LIBPATH . DS . "dropbox" . DS . "Session.php");
 */
 class Bootstrap
 {
-	protected $_controller;
-    protected $_validControllers;
+    protected $_controller;
+	protected $_validControllers;
 
 	public function __construct()
     {
