@@ -1,9 +1,7 @@
 <?php namespace Vnuki\Dropbox;
 
-
 class Authorization_Controller extends Controller_Abstract
 {
-
 	public function __construct()
     {
    		parent::__construct();
@@ -47,7 +45,6 @@ class Authorization_Controller extends Controller_Abstract
             );
 			$this->redirect($url);
 		}
-
 	}
 
 	protected function methodAccessToken()
@@ -126,9 +123,6 @@ class Authorization_Controller extends Controller_Abstract
 	{
 		return $this->_session->obtainRequestToken();	
 	}
-
 }
-
-
 
 ?>

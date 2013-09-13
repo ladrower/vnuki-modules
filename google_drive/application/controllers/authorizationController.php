@@ -3,10 +3,8 @@
 
 class Authorization_Controller extends Controller_Abstract
 {
-
 	const SCOPE_DRIVE_FILE = "https://www.googleapis.com/auth/drive.file";
 	const SCOPE_USERINFO_PROFILE = "https://www.googleapis.com/auth/userinfo.profile";
-
 
 	public function __construct()
     {
@@ -121,9 +119,6 @@ class Authorization_Controller extends Controller_Abstract
 	{
 		return $this->_session->obtainAccessToken($code, $redirect_uri);
 	}
-
 }
-
-
 
 ?>

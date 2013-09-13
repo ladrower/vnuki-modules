@@ -32,8 +32,6 @@ abstract class Controller_Abstract
      */
     protected $_commonAPIURL = "https://www.googleapis.com";
 
-
-
     public function __construct()
     {
         $this->_session = new Google_Session(APP_KEY, APP_SECRET);

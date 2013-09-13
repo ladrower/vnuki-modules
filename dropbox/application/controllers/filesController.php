@@ -3,7 +3,6 @@
 
 class Files_Controller extends Controller_Abstract
 {
-
     protected $_tempFilename = null;
 
 	public function __construct()
@@ -29,7 +28,6 @@ class Files_Controller extends Controller_Abstract
         }
 		
 	}
-
 
     /**
      * Upload a file to the user's Dropbox
@@ -255,10 +253,6 @@ class Files_Controller extends Controller_Abstract
 
         return $response["body"];
     }
-
-
 }
-
-
 
 ?>

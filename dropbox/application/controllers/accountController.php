@@ -1,9 +1,7 @@
 <?php namespace Vnuki\Dropbox;
 
-
 class Account_Controller extends Controller_Abstract
 {
-
 	public function __construct()
     {
    		parent::__construct();
@@ -39,10 +37,6 @@ class Account_Controller extends Controller_Abstract
     	$response = $this->_session->fetch("GET", $this->_dropboxAPIURL, "/account/info");
         return $response["body"];
     }
-
-
 }
-
-
 
 ?>

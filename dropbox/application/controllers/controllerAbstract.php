@@ -32,8 +32,6 @@ abstract class Controller_Abstract
      */
     protected $_dropboxContentAPIURL = "https://api-content.dropbox.com/1";
 
-
-
     public function __construct()
     {
         $this->_session = new Dropbox_Session(APP_KEY, APP_SECRET, APP_ACCESS_TYPE);

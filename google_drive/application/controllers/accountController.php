@@ -3,7 +3,6 @@
 
 class Account_Controller extends Controller_Abstract
 {
-
 	public function __construct()
     {
    		parent::__construct();
@@ -39,10 +38,6 @@ class Account_Controller extends Controller_Abstract
         $response = $this->_session->fetch("GET", $this->_commonAPIURL, "/oauth2/v1/userinfo");
         return $response["body"];
     }
-
-
 }
-
-
 
 ?>
